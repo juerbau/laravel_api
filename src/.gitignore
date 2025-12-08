@@ -1,0 +1,59 @@
+# -------------------------------------------------------------------
+# Laravel Standard-Ausschlüsse
+# -------------------------------------------------------------------
+*.log
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.nova
+/.phpunit.cache
+/.zed
+/auth.json
+
+/node_modules
+/public/hot
+/public/storage
+/public/build
+/storage/*.key
+/vendor
+
+Homestead.json
+Homestead.yaml
+
+# Logs und Cache
+/bootstrap/cache/*.php
+/storage/app/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*.log
+/storage/pail
+
+# Datenbank
+.env
+.env.testing
+.env.backup
+.env.production
+
+# -------------------------------------------------------------------
+# Betriebssystem / Editor-Spezifische Ausschlüsse
+# -------------------------------------------------------------------
+
+.DS_Store
+Thumbs.db
+.idea/
+/.idea
+.vscode/
+npm-debug.log
+yarn-error.log
+.vagrant/
+/.vscode
+
+# -------------------------------------------------------------------
+# Docker-Ausschlüsse (falls Sie diese Ordner in src/ haben)
+# -------------------------------------------------------------------
+
+# Schließt temporäre Build-Artefakte aus, falls sie in src/ landen
+*.swp
+*.bak

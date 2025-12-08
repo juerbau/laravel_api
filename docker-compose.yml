@@ -1,0 +1,61 @@
+version: "3.9"
+
+name: "laravel-api"
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: api_nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/var/www/html:cached
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - php
+    networks:
+      - app_bridge_network
+
+  php:
+    image: juerbau/rainbow-web:php-8.4
+    container_name: api_php
+    volumes:
+      - ./src:/var/www/html:cached
+    env_file:
+      - ./docker/php/php.env
+    depends_on:
+      - mariadb
+    networks:
+      - app_bridge_network
+
+  mariadb:
+    image: mariadb:10.11
+    container_name: api_mariadb
+    restart: always
+    env_file:
+      - ./docker/mariadb/mariadb.env
+    ports:
+      - "3307:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./docker/mariadb/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - app_bridge_network
+
+  redis:
+    image: redis:7
+    container_name: api_redis
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app_bridge_network
+
+networks:
+  app_bridge_network:
+    external: true
+
+volumes:
+  dbdata:

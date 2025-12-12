@@ -3,6 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
+Route::post('/login', function (Request $request) {
+    // nur zum Testen
+    return response()->json([
+        'email' => $request->email,
+    ]);
+});
+
+Route::middleware('sanctum')->get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+});
+

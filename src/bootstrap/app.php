@@ -11,9 +11,17 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
-        //
+    ->withMiddleware(function (Middleware $middleware) {
+        // Dies ist der entscheidende Teil, den Sie HINZUFÜGEN müssen:
+        $middleware->validateCsrfTokens(except: [
+            'login',
+            'logout'
+        ]);
+
+        // Alternativ könnten Sie auch hier eine Route eintragen, falls Sie eine API nutzen:
+        // 'api/login',
     })
+
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();

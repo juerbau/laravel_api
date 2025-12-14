@@ -4,9 +4,9 @@ return [
     'paths' => [
         'api/*',
         'sanctum/csrf-cookie',
-        'login', // Wichtig: Fügen Sie Ihren Login-Endpunkt hinzu
-        'logout',
-        'user'
+        // 'login',
+        // 'logout',
+        // 'user'
         // ... weitere benötigte Routen
     ],
     'allowed_methods' => ['*'],

@@ -15,7 +15,7 @@ Route::get('/', function () {
 
 
 Route::post('/login', function (Request $request) {
-    $credentials = $request->only('email', 'password');
+    $credentials = $request->only(['email', 'password']);
     if (!auth()->attempt($credentials)) {
         return response()->json(['message' => 'Invalid credentials'], 401);
     }

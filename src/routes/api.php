@@ -20,7 +20,40 @@ Route::middleware(['web', 'auth:sanctum'])->group(function () {
     // Beispiel: Abruf der aktuellen Benutzerdaten
     Route::get('/user', function (Request $request) {
         return $request->user();
+        //return json_encode(['name' => 'Furzkanone']);
     });
+
+});
+
+
+Route::post('/login-api', function (Request $request) {
+    // Validierung der Eingaben
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    // Authentifizierung prüfen
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        // 1. Token erstellen: 'authToken' ist ein Name für den Token
+        $token = $user->createToken('authToken')->plainTextToken;
+
+        // 2. Token und User-Daten zurückgeben
+        return response()->json([
+            'user' => $user,
+            'token' => $token, // Der Klartext-Token
+        ], 200);
+    }
+
+    // Login fehlgeschlagen
+    return response()->json(['message' => 'Invalid credentials'], 401);
+});
+
+// Geschützte Route, die den Token erwartet
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
 

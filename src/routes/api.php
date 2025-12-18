@@ -52,9 +52,9 @@ Route::post('/login-api', function (Request $request) {
 });
 
 // Geschützte Route, die den Token erwartet
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
 
 // Route::apiResource('tests', 'App\Http\Controllers\Api\TestController');

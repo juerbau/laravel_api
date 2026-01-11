@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -12,14 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Dies ist der entscheidende Teil, den Sie HINZUFÜGEN müssen:
-        $middleware->validateCsrfTokens(except: [
-            'login',
-            'logout'
-        ]);
-
-        // Alternativ könnten Sie auch hier eine Route eintragen, falls Sie eine API nutzen:
-        // 'api/login',
+        $middleware->statefulApi();
     })
 
     ->withExceptions(function (Exceptions $exceptions): void {

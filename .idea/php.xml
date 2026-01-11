@@ -130,6 +130,11 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-php83" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/clock" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/src/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/src/vendor/laravel/fortify" />
+      <path value="$PROJECT_DIR$/src/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/src/vendor/pragmarx/google2fa" />
+      <path value="$PROJECT_DIR$/src/vendor/bacon/bacon-qr-code" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />

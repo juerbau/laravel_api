@@ -1,13 +1,15 @@
 <?php
 
 return [
+
     'paths' => [
         'api/*',
+        'login',
+        'logout',
         'sanctum/csrf-cookie',
-        // 'login',
-        // 'logout',
-        // 'user'
-        // ... weitere benötigte Routen
+        'forgot-password',
+        'reset-password',
+        'email/verification-notification'
     ],
     'allowed_methods' => ['*'],
     'allowed_origins' => [
@@ -18,6 +20,5 @@ return [
     'allowed_headers' => ['*'],
     'exposed_headers' => [],
     'max_age' => 0,
-// Wichtig:
     'supports_credentials' => true,
 ];

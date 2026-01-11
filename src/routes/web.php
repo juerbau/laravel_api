@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
@@ -14,7 +14,7 @@ Route::get('/', function () {
 //})->middleware('auth'); // Ohne :sanctum, der 'web'-Guard ist Standard
 
 
-Route::post('/login', function (Request $request) {
+/*Route::post('/login', function (Request $request) {
     $credentials = $request->only(['email', 'password']);
     if (!auth()->attempt($credentials)) {
         return response()->json(['message' => 'Invalid credentials'], 401);
@@ -32,4 +32,4 @@ Route::post('/logout', function (Request $request) {
 
     return response()->json(['message' => 'Logged out successfully'], 200);
 });
-
+*/

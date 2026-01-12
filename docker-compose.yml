@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./src:/var/www/html:cached
+      - ./:/var/www/html:cached
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - php
@@ -18,7 +18,7 @@ services:
     image: juerbau/rainbow-web:php-8.4
     container_name: api_php
     volumes:
-      - ./src:/var/www/html:cached
+      - ./:/var/www/html:cached
     env_file:
       - ./docker/php/php.env
     depends_on:
